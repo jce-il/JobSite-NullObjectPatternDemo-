@@ -8,29 +8,18 @@ public class JobSite {
 
 	public JobSite(Location location, Contact contact) {
 		this.location = location;
-		this.contact = contact;
+		this.contact = contact != null ? contact : new NullContact();
 	}
 
 	public String  getContactName(){
-		if (contact != null) {
-			return contact.name;
-		}
-		else {
-			return "no name";
-		}
+		return contact.name;
 	}
 
 	public String getContactPhone(){
-		if (contact != null) {
-			return contact.phone;
-		}
-		else {
-			return "no phone";
-		}
+		return contact.phone;
 	}
 
 	public void email_contact(Email email){
-		if (contact != null)
-			contact.deliver_personalized_email(email);
+		contact.deliver_personalized_email(email);
 	}
 }
